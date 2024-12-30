@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<style>
+  body {
+    font-family: serif,monospace;
+    background-image: url('https://t3.ftcdn.net/jpg/05/71/99/86/240_F_571998686_7q0qDN2lvCn5wv90SHEepoffd0Pq8NRY.jpg'); /* Add your image path here */
+    background-size: cover;
+    background-position: center;
+  }
+  form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: linear-gradient(red, orange, yellow, green, blue, indigo, violet);
+    opacity: 0.8; /* Adjust the opacity as needed */
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="password"]{
+    width: 100%;
+    padding: 10px;
+    margin: 6px 0 21px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+  }
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+</style>
+</head>
+<body>
+<div>
+  <form id="employeeForm" onsubmit="submitForm(event)">
+
+    <center><h1>Sign up</h1></center>
+    
+    <input type="text" placeholder="Username" required>
+
+    <input type="email" placeholder="Email" required>
+
+    <input type="password" placeholder="Password" required>
+
+    <input type="password" placeholder="Confirm Password" required>
+
+    <center><input type="submit" value="Sign UP"></center>
+  
+    <p class="bottom-text">Already have an account? <a href="#" id="loginLink">Login</a></p>
+  </form>
+</div>
+
+<!-- Google Sign-in Button -->
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+<!-- Facebook Sign-in Button -->
+<div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+
+<script>
+  function submitForm(event) {
+    event.preventDefault(); // Prevent the default form submission
+    window.location.href = "index.html"; // Redirect to the desired page
+  }
+
+  document.getElementById("loginLink").addEventListener("click", function() {
+    window.location.href = "login.html"; // Replace "login.html" with the URL of your login page
+  });
+
+  function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    console.log('ID: ' + profile.getId()); // Do something with the user's ID
+    console.log('Name: ' + profile.getName()); // Do something with the user's name
+    console.log('Image URL: ' + profile.getImageUrl()); // Do something with the user's image URL
+    console.log('Email: ' + profile.getEmail()); // Do something with the user's email
+    // Redirect or perform other actions after successful Google sign-in
+  }
+</script>
+
+<!-- Include the Google Sign-In JavaScript SDK -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<!-- Include the Facebook SDK for JavaScript -->
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v12.0&appId=YOUR_APP_ID&autoLogAppEvents=1" nonce="NONCE_VALUE"></script>
+</body>
+</html>

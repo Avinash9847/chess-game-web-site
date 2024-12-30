@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Two-player chess in javascript">
+    <meta name="keywords" content="multiplayer chess,chess,javascript">
+    <meta name="author" content="github @jinpa-t">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two-Player Chess</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <center>
+    <div id="label">
+        <label >Current Turn: </label>
+        <span id="black-turn">Black</span>
+        <span id="white-turn">White</span>
+    </div>
+    <div id="outHolder">
+        <div id="blackTaken" alt="black taken pieces">
+        </div>
+        <div id="whiteTaken">
+        </div>
+    </div>
+    <div class="chessboard">
+      <div id="prompt">
+          <div id="blackChoice">
+              <a class="black-piece" id="b_R" onclick="promotePawn(this)">&#9820</a>
+              <a class="black-piece" id="b_K" onclick="promotePawn(this)">&#9822</a>
+              <a class="black-piece" id="b_B" onclick="promotePawn(this)">&#9821</a>
+              <a class="black-piece" id="b_Q" onclick="promotePawn(this)"> &#9819</a>
+          </div>
+          <div id="whiteChoice">
+              <a class="white-piece" id="w_R" onclick="promotePawn(this)">&#9814</a>
+              <a class="white-piece" id="w_K" onclick="promotePawn(this)">&#9816</a>
+              <a class="white-piece" id="w_B" onclick="promotePawn(this)">&#9815</a>
+              <a class="white-piece" id="w_Q" onclick="promotePawn(this)">&#9813</a>
+          </div>
+      </div>
+      <div id="gameOverNotice">
+          <h3>Game Over!</h3>
+      </div>
+      <div class="indexrow">
+          <div class="a">a</div>
+          <div class="b">b</div>
+          <div class="c">c</div>
+          <div class="d">d</div>
+          <div class="e">e</div>
+          <div class="f">f</div>
+          <div class="g">g</div>
+          <div class="h">h</div>
+      </div>
+      <div class="row8">
+          <div class="level8">8</div>
+          <div class="box white" id="a8" onclick="movePiece(this)"><a id="bRw" class="black-piece" onclick="moveBlack(this)">&#9820</a></div>
+          <div class="box black" id="b8" onclick="movePiece(this)" onclick="movePiece(this)"><a id="bKb" class="black-piece" onclick="moveBlack(this)"  >&#9822</a></div>
+          <div class="box white" id="c8" onclick="movePiece(this)"><a id="bBw" class="black-piece" onclick="moveBlack(this)">&#9821</a></div>
+          <div class="box black" id="d8" onclick="movePiece(this)"><a id="bQ" class="black-piece" onclick="moveBlack(this)"> &#9819</a></div>
+          <div class="box white" id="e8" onclick="movePiece(this)"><a id="bK" class="black-piece" onclick="moveBlack(this)"> &#9818</a></div>
+          <div class="box black" id="f8" onclick="movePiece(this)"><a id="bBb" class="black-piece" onclick="moveBlack(this)"> &#9821</a></div>
+          <div class="box white" id="g8" onclick="movePiece(this)"><a id="bKw" class="black-piece" onclick="moveBlack(this)"> &#9822</a></div>
+          <div class="box black" id="h8" onclick="movePiece(this)"><a id="bRb" class="black-piece" onclick="moveBlack(this)"> &#9820</a></div>
+          <div class="level8">8</div>
+      </div>
+      <div class="row7">
+          <div class="level7">7</div>
+          <div class="box black" id="a7" onclick="movePiece(this)"><a id="bP1" class="black-piece" onclick="moveBlack(this)">   &#9823</a></div>
+          <div class="box white" id="b7" onclick="movePiece(this)"><a id="bP2" class="black-piece" onclick="moveBlack(this)">   &#9823</a></div>
+          <div class="box black" id="c7" onclick="movePiece(this)"><a id="bP3" class="black-piece" onclick="moveBlack(this)">   &#9823</a></div>
+          <div class="box white" id="d7" onclick="movePiece(this)"><a id="bP4" class="black-piece" onclick="moveBlack(this)">   &#9823</a></div>
+          <div class="box black" id="e7" onclick="movePiece(this)"><a id="bP5" class="black-piece" onclick="moveBlack(this)">   &#9823</a></div>
+          <div class="box white" id="f7" onclick="movePiece(this)"><a id="bP6" class="black-piece" onclick="moveBlack(this)">   &#9823</a></div>
+          <div class="box black" id="g7" onclick="movePiece(this)"><a id="bP7" class="black-piece" onclick="moveBlack(this)">   &#9823</a></div>
+          <div class="box white" id="h7" onclick="movePiece(this)"><a id="bP8" class="black-piece" onclick="moveBlack(this)">   &#9823</a></div>
+          <div class="level7">7</div>
+      </div>
+      <div class="row6">
+          <div class="level6">6</div>
+          <div class="box white" id="a6" onclick="movePiece(this)"></div>
+          <div class="box black" id="b6" onclick="movePiece(this)"></div>
+          <div class="box white" id="c6" onclick="movePiece(this)"></div>
+          <div class="box black" id="d6" onclick="movePiece(this)"></div>
+          <div class="box white" id="e6" onclick="movePiece(this)"></div>
+          <div class="box black" id="f6" onclick="movePiece(this)"></div>
+          <div class="box white" id="g6" onclick="movePiece(this)"></div>
+          <div class="box black" id="h6" onclick="movePiece(this)"></div>
+          <div class="level6">6</div>
+      </div>
+      <div class="row5">
+          <div class="level5">5</div>
+          <div class="box black" id="a5" onclick="movePiece(this)"></div>
+          <div class="box white" id="b5" onclick="movePiece(this)"></div>
+          <div class="box black" id="c5" onclick="movePiece(this)"></div>
+          <div class="box white" id="d5" onclick="movePiece(this)"></div>
+          <div class="box black" id="e5" onclick="movePiece(this)"></div>
+          <div class="box white" id="f5" onclick="movePiece(this)"></div>
+          <div class="box black" id="g5" onclick="movePiece(this)"></div>
+          <div class="box white" id="h5" onclick="movePiece(this)"></div>
+          <div class="level5">5</div>
+      </div>
+      <div class="row4">
+          <div class="level4">4</div>
+          <div class="box white" id="a4" onclick="movePiece(this)"></div>
+          <div class="box black" id="b4" onclick="movePiece(this)"></div>
+          <div class="box white" id="c4" onclick="movePiece(this)"></div>
+          <div class="box black" id="d4" onclick="movePiece(this)"></div>
+          <div class="box white" id="e4" onclick="movePiece(this)"></div>
+          <div class="box black" id="f4" onclick="movePiece(this)"></div>
+          <div class="box white" id="g4" onclick="movePiece(this)"></div>
+          <div class="box black" id="h4" onclick="movePiece(this)"></div>
+          <div class="level4">4</div>
+      </div>
+      <div class="row3">
+          <div class="level3">3</div>
+          <div class="box black" id="a3" onclick="movePiece(this)"></div>
+          <div class="box white" id="b3" onclick="movePiece(this)"></div>
+          <div class="box black" id="c3" onclick="movePiece(this)"></div>
+          <div class="box white" id="d3" onclick="movePiece(this)"></div>
+          <div class="box black" id="e3" onclick="movePiece(this)"></div>
+          <div class="box white" id="f3" onclick="movePiece(this)"></div>
+          <div class="box black" id="g3" onclick="movePiece(this)"></div>
+          <div class="box white" id="h3" onclick="movePiece(this)"></div>
+          <div class="level3">3</div>
+      </div>
+      <div class="row2">
+          <div class="level2">2</div>
+          <div class="box white" id="a2" onclick="movePiece(this)"><a id="wP1" class="white-piece" onclick="moveWhite(this)"  > &#9817</a></div>
+          <div class="box black" id="b2" onclick="movePiece(this)"><a id="wP2" class="white-piece" onclick="moveWhite(this)"  > &#9817</a></div>
+          <div class="box white" id="c2" onclick="movePiece(this)"><a id="wP3" class="white-piece" onclick="moveWhite(this)"  > &#9817</a></div>
+          <div class="box black" id="d2" onclick="movePiece(this)"><a id="wP4" class="white-piece" onclick="moveWhite(this)"  > &#9817</a></div>
+          <div class="box white" id="e2" onclick="movePiece(this)"><a id="wP5" class="white-piece" onclick="moveWhite(this)"  > &#9817</a></div>
+          <div class="box black" id="f2" onclick="movePiece(this)"><a id="wP6" class="white-piece" onclick="moveWhite(this)"  > &#9817</a></div>
+          <div class="box white" id="g2" onclick="movePiece(this)"><a id="wP7" class="white-piece" onclick="moveWhite(this)"  > &#9817</a></div>
+          <div class="box black" id="h2" onclick="movePiece(this)"><a id="wP8" class="white-piece" onclick="moveWhite(this)"  > &#9817</a></div>
+          <div class="level2">2</div>
+      </div>
+      <div class="row1">
+          <div class="level1">1</div>
+          <div class="box black" id="a1" onclick="movePiece(this)"><a id="wRb" class="white-piece" onclick="moveWhite(this)"  > &#9814</a></div>
+          <div class="box white" id="b1" onclick="movePiece(this)"><a id="wKw" class="white-piece" onclick="moveWhite(this)" >&#9816</a></div>
+          <div class="box black" id="c1" onclick="movePiece(this)"><a id="wBb" class="white-piece" onclick="moveWhite(this)"  >     &#9815</a></div>
+          <div class="box white" id="d1" onclick="movePiece(this)"><a id="wQ" class="white-piece" onclick="moveWhite(this)"  >  &#9813</a></div>
+          <div class="box black" id="e1" onclick="movePiece(this)"><a id="wK" class="white-piece" onclick="moveWhite(this)"  > &#9812</a></div>
+          <div class="box white" id="f1" onclick="movePiece(this)"><a id="wBw" class="white-piece" onclick="moveWhite(this)"  >     &#9815</a></div>
+          <div class="box black" id="g1" onclick="movePiece(this)"><a id="wKb" class="white-piece" onclick="moveWhite(this)"  > &#9816</a></div>
+          <div class="box white" id="h1" onclick="movePiece(this)"><a id="wRw" class="white-piece" onclick="moveWhite(this)"> &#9814</a></div>
+          <div class="level1">1</div>
+      </div>
+      <div class="indexrow">
+          <div class="a">a</div>
+          <div class="b">b</div>
+          <div class="c">c</div>
+          <div class="d">d</div>
+          <div class="e">e</div>
+          <div class="f">f</div>
+          <div class="g">g</div>
+          <div class="h">h</div>
+      </div>
+    </div> <!-- end of chessboard -->
+    <div id="draw-notice">
+        <span id="resigning-player"></span>
+        <button id="agree-draw">Yes</button>
+        <button id="disagree-draw">No</button>
+    </div>
+    <div id="game-options">
+        <div>
+            <span>Black:</span>
+            <button id="black-resign">Resign</button>
+            <button id="black-draw">Draw</button>
+        </div>
+        <div>
+            <span>White:</span>
+            <button id="white-resign">Resign</button>
+            <button id="white-draw">Draw</button>
+        </div>
+        <div>
+            <button id="restart">Restart</button>
+            <button id="rotate" onclick="rotateBoard()">Rotate Board</button>
+        </div>
+    </div>
+    <div class="move-wrapper">
+        <table>
+            <thead>
+                <th>White moves</th>
+                <th>Black moves</th>
+            </thead>
+            <tbody id="move-history">
+            </tbody>
+        </table>        
+        <template id="move-template">
+            <tr class="move">
+                <td></td>
+                <td></td>
+            </tr>
+        </template>
+    </div>
+</center>
+    <script src="main.js"></script>
+    <script src="rotate.js"></script>
+  </body>
+</html>

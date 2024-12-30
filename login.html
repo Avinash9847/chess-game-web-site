@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chess Game Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://t3.ftcdn.net/jpg/05/71/99/86/240_F_571998686_7q0qDN2lvCn5wv90SHEepoffd0Pq8NRY.jpg'); 
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background */
+    }
+
+    .container {
+      width: 300px;
+      padding: 20px;
+      background: linear-gradient(red, orange, yellow, green, blue, indigo, violet);
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background-color: #4306fa;
+      color: #fff;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    button:hover {
+      background-color: #3110c7;
+    }
+
+    .bottom-text {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .bottom-text a {
+      color: #4306fa;
+      text-decoration: none;
+    }
+
+    .bottom-text a:hover {
+      text-decoration: underline;
+    }
+
+    authentication-social-signin-separator {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 4rem;
+    justify-content: center;
+    margin: -1.5rem 0 2rem;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Login</h1>
+    <form action="#" id="loginForm">
+      <input type="text" placeholder="Username" required>
+      <input type="password" placeholder="Password" required>
+      <button>Login</button>
+    </form>
+    <div class="authentication-social-signin-separator">
+    <span>-------------------------</span>
+    <span class="authentication-social-signin-separator">OR</span>
+    <span>-------------------------</span>
+  </div>
+    <button onclick="googleLogin()">Login with Google</button>
+    <button onclick="facebookLogin()">Login with Facebook</button>
+    <p class="bottom-text">Don't have an account? <a href="#" id="loginLink">Sign Up</a></p>
+  </div>
+  
+  <script>
+    document.getElementById("loginLink").addEventListener("click", function() {
+      window.location.href = "login 2.html"; 
+    });
+
+    document.querySelector("form").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent the default form submission
+      window.location.href = "index.html"; // Redirect to the desired page
+    });
+
+    function googleLogin() {
+      // Implement Google login logic here
+      alert("Redirecting to Google login...");
+    }
+
+    function facebookLogin() {
+      // Implement Facebook login logic here
+      alert("Redirecting to Facebook login...");
+    }
+  </script>
+</body>
+</html>
